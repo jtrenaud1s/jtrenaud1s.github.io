@@ -7,8 +7,9 @@
             function calculate(isk_cost, input_cost, num_item_per_purchase, fac_lp_cost, selling_price, conversion_rate, concord_to_spend = 0)
             {
                 var concord_lp = (fac_lp_cost / num_item_per_purchase) / conversion_rate;
+                var total_lp = concord_lp * num_item_per_purchase;
                 var isk_lp = (selling_price - (isk_cost/num_item_per_purchase) - input_cost) / concord_lp;
-                var profit = isk_lp * concord_to_spend;
+                var profit = isk_lp * concord_to_spend * total_lp;
                 
                 alert("ISK/Concord LP = " + isk_lp + "\nEstimated Profit = " + profit);
             }
@@ -30,12 +31,12 @@
 
     <body>
         <input type = "number" placeholder = "Isk paid for item" id = "iskCost"/><br>
-        <input type = "number" placeholder = "Input Item Cost" id = "inputCost"/><br>
+        <input type = "number" placeholder = "Input Item Cost" id = "inputCost"/> Market value of 1x input item (114.99 for a missile or 100000 for a web/scram/tracking link<br>
         <input type = "number" placeholder = "Number of Items per Purchase" id = "numItem"/>  (Ex. 5000 charges per purchase or 1 implant per purchase)<br>
-        <input type = "number" placeholder = "Faction LP Cost of Item" id = "fac_lp"/><br>
-        <input type = "number" placeholder = "Selling Price" id = "sell"/><br>
-        <input type = "number" placeholder = "Conversion Rate Decimal" id = "rate"/><br>
-        <input type = "number" placeholder = "CONCORD LP to spend" id = "lpSpend" value = "0"/><br>
+        <input type = "number" placeholder = "Faction LP Cost of Item" id = "fac_lp"/> Number of LP that must be spent on one LP store purchase<br>
+        <input type = "number" placeholder = "Selling Price" id = "sell"/>Your desired selling price on the market per individual item<br>
+        <input type = "number" placeholder = "Conversion Rate Decimal" id = "rate"/>Concord to Faction LP Exchange rate (EG 0.8, 0.4)<br>
+        <input type = "number" placeholder = "Purchase Amount" id = "lpSpend" value = "0"/>Number of times to purchase from LP store<br>
         <button onclick="doCalculate();" >Calculate</button>
 
     </body>
