@@ -7,7 +7,7 @@
             function calculate(isk_cost, input_cost, num_item_per_purchase, fac_lp_cost, selling_price, conversion_rate, concord_to_spend = 0)
             {
                 var concord_lp = fac_lp_cost / conversion_rate;
-                var isk_lp = (num_item_per_purchase * (selling_price - isk_cost - input_cost)) / concord_lp;
+                var isk_lp = (selling_price - (isk_cost/num_item_per_purchase) - input_cost) / concord_lp;
                 var profit = isk_lp * concord_to_spend;
                 
                 alert("ISK/Concord LP = " + isk_lp + "\nEstimated Profit = " + profit);
