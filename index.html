@@ -6,7 +6,7 @@
         <script type="text/javascript">
             function calculate(isk_cost, input_cost, num_item_per_purchase, fac_lp_cost, selling_price, conversion_rate, concord_to_spend = 0)
             {
-                var concord_lp = fac_lp_cost / conversion_rate;
+                var concord_lp = (fac_lp_cost / num_item_per_purchase) / conversion_rate;
                 var isk_lp = (selling_price - (isk_cost/num_item_per_purchase) - input_cost) / concord_lp;
                 var profit = isk_lp * concord_to_spend;
                 
