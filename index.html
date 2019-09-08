@@ -2,46 +2,40 @@
     <html>
 
     <head>
-        <title>Incursion Guide</title>
+        <title>ISK/CONCORD LP Calculator</title>
         <script type="text/javascript">
-            function toggle_visibility(id) {
-                var e = document.getElementById(id);
-                if (e.style.display == 'block')
-                    e.style.display = 'none';
-                else
-                    e.style.display = 'block';
-            }
-        </script>
-        <style>
-            .spoil {
-                background-color: #fafafa;
-                padding: 1em
+            function calculate(isk_cost, input_cost, fac_lp_cost, selling_price, conversion_rate, concord_to_spend = 0)
+            {
+                var concord_lp = fac_lp_cost / conversion_rate;
+                var isk_lp = (selling_price - isk_cost - input_cost) / concord_lp;
+                var profit = isk_lp * concord_to_spend;
+                
+                alert("ISK/Concord LP = " + isk_lp + "\nEstimated Profit = " + profit);
             }
             
-            .spoilb {
-                padding: .2em;
-                font-weight: bold;
-                font-family: sans-serif;
-                border: 1px solid red;
-                background-color: #ddd;
+            function doCalculate()
+            {
+                var isk_paid = document.getElementById("iskCost");
+                var input_cost = document.getElementById("inputCost");
+                var fac_lp = document.getElementById("fac_lp");
+                var sell = document.getElementById("sell");
+                var rate = document.getElementById("rate");
+                var lpSpend = document.getElementById("lpSpend");
+                
+                calculate(isk_paid, input_cost, fac_lp, sell, rate, lpSpend);
             }
-        </style>
+        </script>
     </head>
 
     <body>
-        <button onclick="toggle_visibility('sites');" class="spoilb">Sites</button>
-        <div style="display:none" id="sites">
-            <p>Scout Systems you need 3-5 Pilots. It is pretty simple and straight forward and good place for beginning pilots to test their skills. </p>
+        <input type = "number" hint = "Isk paid for item" id = "iskCost"/>
+        <input type = "number" hint = "Input Item Cost" id = "inputCost"/>
+        <input type = "number" hint = "Faction LP Cost of Item" id = "fac_lp"/>
+        <input type = "number" hint = "Selling Price" id = "sell"/>
+        <input type = "number" hint = "Conversion Rate Decimal" id = "rate"/>
+        <input type = "number" hint = "LP to spend" id = "lpSpend" value = "0"/>
+        <button onclick="doCalculate();" >Calculate</button>
 
-            <p>Vanguard Systems are a bit challenging for first timer FCs. You need 5-10 (10 for max pay out) pilots for this. Normally most fleets will have 11 pilots. 3 Logistics and 8 DPS (7 DPS for max payout) </p>
-
-            <p>Assault Systems are quite fun when you want a change of pace. You need 10 – 20 pilots it is recommended you have 5 Logistics, 10 Sniper Battleships, and 5 T3/Cruiser hulls. </p>
-
-            <p>Headquarter Systems is where the fun can be at and many pilots spend all their time there. It is recommended to 20 – 40 pilots. 10 Sniper Battleships, 10 Logistics, 20 DPS of varying ships. </,p>
-
-                <p>The Kundalini Manifest is the mother of all sites found only in the Headquarter System. Finishing this site will end the incursion in the constellation. You need a lot of people for this one max pay out is 30 to 50 pilots. 10 – 15 Logistics and everything else is DPS. Warning you need an FC who knows what they are doing along with a Logistics Commander that also knows what to do. Now many fleets run with 80 People in it before it becomes an eligable fleet for pay out.</p>
-            </p>
-        </div>
     </body>
 
     </html>
