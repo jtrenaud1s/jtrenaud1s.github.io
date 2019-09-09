@@ -11,7 +11,7 @@
                 var isk_lp = (selling_price - (isk_cost/num_item_per_purchase) - input_cost) / concord_lp;
                 var profit = isk_lp * concord_to_spend * total_lp;
                 
-                alert("ISK/Concord LP = " + isk_lp + "\nEstimated Profit = " + profit + "\nNote: All costs are factored in, so what you see here is the true isk/concord lp and the profit is 100% profit, before taxes and brokers fees");
+                alert("ISK/Concord LP = " + isk_lp + "\nEstimated Profit = " + profit + "\nConcord LP Spent = " + concord_to_spend * total_lp + "\nFaction To Exchange = " + fac_lp_cost * concord_to_spend + "\nNote: All costs are factored in, so what you see here is the true isk/concord lp and the profit is 100% profit, before taxes and brokers fees");
             }
             
             function doCalculate()
@@ -30,7 +30,7 @@
     </head>
 
     <body>
-        <input type = "number" placeholder = "Isk paid for item" id = "iskCost"/> Isk paid to LP store per purchase<br>
+        <input type = "number" placeholder = "Isk paid for item" id = "iskCost"/> Isk paid to LP store per purchase (2400)<br>
         <input type = "number" placeholder = "Input Item Cost" id = "inputCost"/> Market value of 1x input item (114.99 for a missile or 100000 for a web/scram/tracking link<br>
         <input type = "number" placeholder = "Number of Items per Purchase" id = "numItem"/>  (Ex. 5000 charges per purchase or 1 implant per purchase)<br>
         <input type = "number" placeholder = "Faction LP Cost of Item" id = "fac_lp"/> Number of LP that must be spent on one LP store purchase<br>
